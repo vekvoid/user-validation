@@ -26,8 +26,8 @@ mocha.describe('API endpoint /v1/user/validateUsername', function testing() {
       expect(res).to.have.status(200);
       expect(res).to.be.json;
       expect(res.body).to.be.an('object');
-      expect(res.body.meta.error).to.equal('');
       expect(res.body.data.found).to.equal(true);
+      expect(res.body.meta.error).to.equal('');
     }));
 });
 
@@ -49,8 +49,8 @@ mocha.describe('API endpoint /v1/user/validateUserPassword', function testing() 
       expect(res).to.have.status(200);
       expect(res).to.be.json;
       expect(res.body).to.be.an('object');
-      expect(res.body.meta.error).to.equal('');
       expect(res.body.data.found).to.equal(true);
+      expect(res.body.meta.error).to.equal('');
     }));
 
   it('should return username/password NOT match validating case sensitive', () => chai.request(url)
@@ -60,8 +60,8 @@ mocha.describe('API endpoint /v1/user/validateUserPassword', function testing() 
       expect(res).to.have.status(200);
       expect(res).to.be.json;
       expect(res.body).to.be.an('object');
-      expect(res.body.meta.error).to.equal('');
       expect(res.body.data.found).to.equal(false);
+      expect(res.body.meta.error).to.equal('');
     }));
 
   it('should return username/password NOT match validating empty password', () => chai.request(url)
@@ -71,7 +71,7 @@ mocha.describe('API endpoint /v1/user/validateUserPassword', function testing() 
       expect(res).to.have.status(200);
       expect(res).to.be.json;
       expect(res.body).to.be.an('object');
-      expect(res.body.meta.error).to.equal('');
       expect(res.body.data.found).to.equal(false);
+      expect(res.body.meta.error).to.equal('');
     }));
 });
