@@ -3,7 +3,7 @@ const user = require('../models/user');
 function extractFirstReg(results) {
   let resultJson = JSON.stringify(results);
 
-  if (results.length > 0) {
+  if (results && results.length > 0) {
     [resultJson] = JSON.parse(resultJson);
   } else {
     resultJson = {};
@@ -59,6 +59,11 @@ const UserController = {
     const { username } = req.body;
 
     user.getUserByUsername(username, (error, results) => {
+      if (error) {
+        res.json(error);
+        return;
+      }
+
       const validationResult = results.length > 0;
       const resultJson = extractFirstReg(results);
       const msgsObject = {
@@ -80,6 +85,11 @@ const UserController = {
     const { username, password } = req.body;
 
     user.getUserByUsernamePassword(username, password, (error, results) => {
+      if (error) {
+        res.json(error);
+        return;
+      }
+
       const validationResult = results.length > 0;
       const msgsObject = {
         ok: 'Correct user/password.',
