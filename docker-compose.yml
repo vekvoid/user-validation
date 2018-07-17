@@ -1,0 +1,30 @@
+version: "2"
+services:
+  node:
+    env_file: .env
+    image: "node:8"
+    container_name: node.dev
+    user: "node"
+    working_dir: /home/node/app
+    environment:
+      - NODE_ENV=${NODE_ENV}
+    volumes:
+      - ./:/home/node/app
+    ports:
+      - "${PORT}:${PORT}"
+    links:
+      - mysql
+    command: "node app.js"
+  mysql:
+    env_file: .env
+    image: mysql:5.7
+    container_name: mysql.dev
+    environment:
+      - MYSQL_DATABASE=${DB_DATABASE}
+      - MYSQL_USER=${DB_USERNAME}
+      - MYSQL_ROOT_PASSWORD=${DB_PASSWORD}
+      - MYSQL_PASSWORD=${DB_PASSWORD}
+    volumes:
+      - ./mysql:/docker-entrypoint-initdb.d
+    expose:
+      - "${DB_PORT}"
