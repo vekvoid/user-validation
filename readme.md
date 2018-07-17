@@ -2,13 +2,14 @@
 
 ## Usage
 
-**Installation:**
+**Run:**
 ```
 npm install
 ```
 ```
 docker-compose up -d
 ```
+Wait until the docker machines are configured in background.
 
 **Test:**
 ```
