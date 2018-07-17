@@ -4,7 +4,7 @@
   "description": "",
   "main": "app.js",
   "scripts": {
-    "test": "docker-compose up -d && mocha --recursive",
+    "test": "mocha --recursive",
     "start": "docker-compose up -d",
     "dev": "nodemon -L app.js"
   },
